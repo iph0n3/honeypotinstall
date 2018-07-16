@@ -1,0 +1,9 @@
+Django==1.8
+pygeoip
+django-pagination
+django-tables2==0.16
+django-compressor==1.4 
+django-htmlmin
+django-filter==0.15
+django-tables2-simplefilter
+pysubnettree
