@@ -76,8 +76,8 @@ else
 		if [ $? -eq 0 ]
 		then
 			tar xvf Python-2.7.12.tgz
-			yum install openssl-devel
-			yum install gcc
+			yum install openssl-devel -y
+			yum install gcc -y
 			if [ $? -eq 0 ]
 			then 
 				cd Python-2.7.12
@@ -202,7 +202,7 @@ else
 	then 
 		echo -e "npm already exist"
 	else
-		yum install npm
+		yum install npm -y
 		if [ $? -eq 0 ] 
 		then 
 			echo -e "npm is installed successful"
@@ -225,7 +225,7 @@ fi
 
 
 #python-netaddr
-yum install python-netaddr
+yum install python-netaddr -y
 if [ $? -eq 0 ]
 then
 	echo -e "python-netaddr is installed successful"
@@ -277,4 +277,3 @@ else
 	fi
 
 fi
-
