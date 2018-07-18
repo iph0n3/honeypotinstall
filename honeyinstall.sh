@@ -255,7 +255,7 @@ fi
 
 #GeoLiteCity && GeoIP
 ls /opt/DionaeaFR/DionaeaFR/static/GeoIP.dat && ls /opt/DionaeaFR/DionaeaFR/static/GeoLiteCity.dat
-if [ $? -eq 0]
+if [ $? -eq 0 ]
 then
 	echo -e "GeoIP.dat and GeoLiteCity.dat is already mv to /opt/DionaeaFR/DionaeaFR/static"
 else
