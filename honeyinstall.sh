@@ -236,33 +236,45 @@ fi
 
 #DionaeaFR
 echo ">>> now start to install DionaeaFR"
-cd /opt
-git clone https://github.com/rubenespadas/DionaeaFR
+ls /opt/DionaeaFR/.git
 if [ $? -eq 0 ]
 then
-        echo -e "DionaeaFR is loaded"
+	echo -e "DionaeaFR is downloaded!"
 else
-        echo -e "DionaeaFR is error"
-        exit 1
+	cd /opt
+	git clone https://github.com/rubenespadas/DionaeaFR
+	if [ $? -eq 0 ]
+	then
+	        echo -e "DionaeaFR is loaded"
+	else
+	        echo -e "DionaeaFR is error"
+	        exit 1
+	fi
+
 fi
 
 #GeoLiteCity && GeoIP
-wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
-if [ $? -eq 0 ]
-then 
-	wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+ls /opt/DionaeaFR/DionaeaFR/static/GeoIP.dat && ls /opt/DionaeaFR/DionaeaFR/static/GeoLiteCity.dat
+if [ $? -eq 0]
+then
+	echo -e "GeoIP.dat and GeoLiteCity.dat is already mv to /opt/DionaeaFR/DionaeaFR/static"
+else
+	wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCity.dat.gz
 	if [ $? -eq 0 ]
-	then
-		gunzip GeoLiteCity.dat.gz && gunzip GeoIP.dat.gz
-		mv GeoIP.dat DionaeaFR/DionaeaFR/static && mv GeoLiteCity.dat DionaeaFR/DionaeaFR/static
+	then 
+		wget http://geolite.maxmind.com/download/geoip/database/GeoLiteCountry/GeoIP.dat.gz
+		if [ $? -eq 0 ]
+		then
+			gunzip GeoLiteCity.dat.gz && gunzip GeoIP.dat.gz
+			mv GeoIP.dat DionaeaFR/DionaeaFR/static && mv GeoLiteCity.dat DionaeaFR/DionaeaFR/static
+		else
+			echo -e "unzip error"
+			exit 1
+		fi
 	else
-		echo -e "unzip error"
+		echo -e "wget GeoliteCity.dat.gz error"
 		exit 1
 	fi
-else
-	echo -e "wget GeoliteCity.dat.gz error"
-	exit 1
+
 fi
-
-
 
