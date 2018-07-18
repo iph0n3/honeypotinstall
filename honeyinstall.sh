@@ -110,7 +110,7 @@ if [[ $PIPVERSION == *$strPIP* ]]
 then
 	echo -e "pip2.7 for python2.7 is installed"
 else
-	curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+	wget https://bootstrap.pypa.io/get-pip.py
 	if [ $? -eq 0 ]
 	then
 		python2.7 get-pip.py
